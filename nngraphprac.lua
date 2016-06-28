@@ -58,7 +58,7 @@ end
 
 test_inputs, test_labels = mnist:getTestset()
 correct = 0
-for i=1, 10000 do
+for i=1, mnist:getTestsetSize() do
     local groundtruth = test_labels[i]
     local prediction = net:forward(test_inputs[i])
     local confidences, indices = torch.sort(prediction, true)  -- true means sort in descending order
