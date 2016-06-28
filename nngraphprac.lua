@@ -31,7 +31,7 @@ net:add(nn.ReLU())
 net:add(nn.Linear(120, 84))
 net:add(nn.ReLU())                      
 net:add(nn.Linear(84, 10))                   -- 10 is the number of outputs of the network 
-net:add(nn.LogSoftMax())       -- converts the output to a log-probability. Useful for classification problems
+net:add(nn.LogSoftMax())       -- converts the output to a log-probability.
 
 
 local criterion = nn.ClassNLLCriterion()
