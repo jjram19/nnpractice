@@ -37,11 +37,10 @@ net:add(nn.LogSoftMax())       -- converts the output to a log-probability.
 local criterion = nn.ClassNLLCriterion()
 local params, gradParams = net:getParameters()
 local optimState = {learningRate=0.01}
-
 local batchSize = 128
-mnist:startEpoch(batchSize)
 
 for epoch = 1, 10 do
+    mnist:startEpoch(batchSize)
     for x = 1, mnist:nBatches() do
         inputsX, labelsX = mnist:getMiniBatch(x)
         local function feval(params)
