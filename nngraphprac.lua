@@ -62,5 +62,5 @@ end
 --TEST DATA
 test_inputs, test_labels = mnist:getTestset()
 local prediction = net:forward(test_inputs)
-local topscores = nnutils.topkScore(prediction, test_labels, 3)
+local topscores = nnutils.topkScore(prediction, test_labels, 1)
 print(topscores, 'The accuracy when compared with MNIST test data is ' .. 100*topscores/10000 .. ' % ')
