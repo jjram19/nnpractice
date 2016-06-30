@@ -8,6 +8,7 @@ require 'optim'
 mnist = nnutils.MNISTLoader()
 inputs, labels = mnist:getTrainset()
 
+--NORM DATA
 mean = { }
 stdv = { }
 mean[1] = inputs[{ {}, {1}, {}, {}  }]:mean() -- mean estimation
@@ -34,7 +35,7 @@ net:add(nn.ReLU())                       -- non-linearity
 net:add(nn.Linear(84, 10))                   -- 10 is the number of outputs of the network (in this case, 10 digits)
 net:add(nn.LogSoftMax())       -- converts the output to a log-probability. Useful for classification problems
 
-
+--VARIABLE DEFS
 local criterion = nn.ClassNLLCriterion()
 local params, gradParams = net:getParameters()
 local optimState = {learningRate=0.01}
