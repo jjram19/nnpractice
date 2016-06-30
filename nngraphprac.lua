@@ -42,7 +42,7 @@ local optimState = {learningRate=0.01}
 local batchSize = 128
 
 --TRAINING LOOP
-for epoch = 1, 1 do
+for epoch = 1, 10 do
     mnist:startEpoch(batchSize)
     for x = 1, mnist:nBatches() do
         inputsX, labelsX = mnist:getMiniBatch(x)
