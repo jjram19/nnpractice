@@ -1,6 +1,11 @@
+-- This script downloads the MNIST dataset and uses a simple 
+-- fully connected neural network for classification
+
 require 'torch'
 require 'nn'
 require 'paths'
+
+-- Downloads MNIST into trainset
 if (not paths.filep("cifar10torchsmall.zip")) then
         os.execute('wget -c https://s3.amazonaws.com/torch7/data/cifar10torchsmall.zip')
             os.execute('unzip cifar10torchsmall.zip')
@@ -73,6 +78,7 @@ for i=1,10000 do
 end
 print(correct, 100*correct/10000 .. ' % ')
 
+-- Determine results
 class_performance = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
 for i=1,10000 do
     local groundtruth = testset.label[i]
@@ -83,6 +89,7 @@ for i=1,10000 do
     end
 end
 
+-- Print out results
 for i=1,#classes do
     print(classes[i], 100*class_performance[i]/1000 .. ' %')
 end
